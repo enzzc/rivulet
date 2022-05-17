@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rivulet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rivulet
+  template:
+    metadata:
+      labels:
+        app: rivulet
+    spec:
+      containers:
+      - name: rivulet
+        image: sgble/rivulet:latest
+      - name: riv-redis
+        image: redis:latest
+        ports:
+        - name: redisp
+          containerPort: 6379
+          protocol: TCP
