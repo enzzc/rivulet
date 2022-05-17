@@ -7,7 +7,7 @@ transient anyway).
 Here is a running instance: <https://rivulet.sagebl.eu>.
 
 ## (Non)features
- * Fast and light.
+ * Fast and lightweight.
  * Visited links are purple, i.e., no need for a read/not-read flag.
  * No "save" feature to read later. (i.e., never.)
  * No preview: the title of the entry is enough.
