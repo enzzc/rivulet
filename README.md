@@ -28,6 +28,6 @@ If you have a list in a plain text format, here is a trick to populate Redis:
 cat feeds.txt | xargs printf "sadd riv:feeds '%s'\n" | redis-cli --pipe
 ```
 
-## Dependencies:
- * <https://github.com/go-redis/redis/>
+## Dependencies
+ * <https://github.com/go-redis/redis>
  * <https://github.com/mmcdole/gofeed>
