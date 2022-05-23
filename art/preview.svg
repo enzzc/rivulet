@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="243.86478mm"
+   height="102.24116mm"
+   viewBox="0 0 243.86478 102.24116"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="preview.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.69130191"
+     inkscape:cx="412.26561"
+     inkscape:cy="332.70558"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(23.692142,-22.34086)">
+    <g
+       id="g230096"
+       transform="translate(5.8336723,15.958129)">
+      <rect
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.0289646;stroke-linejoin:round"
+         id="rect2931"
+         width="243.83582"
+         height="102.2122"
+         x="-29.511332"
+         y="6.3972135" />
+      <g
+         id="g230067"
+         transform="translate(11.791577,-8.608687)">
+        <text
+           xml:space="preserve"
+           style="font-size:4.93889px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';letter-spacing:0px;stroke-width:0.264583"
+           x="5.5237947"
+           y="30.627443"
+           id="text4687"><tspan
+             sodipodi:role="line"
+             id="tspan4685"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93889px;font-family:serif;-inkscape-font-specification:'serif Bold';stroke-width:0.264583"
+             x="5.5237947"
+             y="30.627443">Rivulet</tspan></text>
+        <g
+           id="g153007"
+           transform="translate(-0.42665,-57.777731)">
+          <text
+             xml:space="preserve"
+             style="font-size:4.93889px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';text-decoration:underline;text-decoration-line:underline;letter-spacing:0px;fill:#0000ff;stroke-width:0.264583"
+             x="6.5143943"
+             y="104.79736"
+             id="text13801-1"><tspan
+               sodipodi:role="line"
+               id="tspan13799-2"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:serif;-inkscape-font-specification:serif;fill:#0000ff;stroke-width:0.264583"
+               x="6.5143943"
+               y="104.79736">Running Docker / Alpine Linux in an IPv6-only environment</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:4.02167px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';text-decoration:underline;text-decoration-line:underline;letter-spacing:0px;fill:#800080;stroke-width:0.264583"
+             x="77.776466"
+             y="114.84946"
+             id="text13801-1-9"><tspan
+               sodipodi:role="line"
+               id="tspan13799-2-3"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.02167px;font-family:serif;-inkscape-font-specification:serif;fill:#800080;stroke-width:0.264583"
+               x="77.776466"
+               y="114.84946">blog.apnic.net/feed/</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:4.02167px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';letter-spacing:0px;stroke-width:0.264583"
+             x="6.1976647"
+             y="114.76323"
+             id="text67179-7"><tspan
+               sodipodi:role="line"
+               id="tspan67177-0"
+               style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.02167px;font-family:serif;-inkscape-font-specification:'serif Italic';stroke-width:0.264583"
+               x="6.1976647"
+               y="114.76323">2022-05-23 23:20:00 +0000 UTC -</tspan></text>
+        </g>
+        <g
+           id="g153007-2"
+           transform="translate(-60.973052,194.04083)">
+          <g
+             id="g187572"
+             transform="translate(60.546402,-226.22449)">
+            <text
+               xml:space="preserve"
+               style="font-size:4.93889px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';text-decoration:underline;text-decoration-line:underline;letter-spacing:0px;fill:#0000ff;stroke-width:0.264583"
+               x="6.5143943"
+               y="104.79736"
+               id="text13801-1-0"><tspan
+                 sodipodi:role="line"
+                 id="tspan13799-2-2"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:serif;-inkscape-font-specification:serif;fill:#0000ff;stroke-width:0.264583"
+                 x="6.5143943"
+                 y="104.79736">IEEE 754 : Quand votre code prend la float</tspan></text>
+            <text
+               xml:space="preserve"
+               style="font-size:4.02167px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';text-decoration:underline;text-decoration-line:underline;text-decoration-color:#0000ff;letter-spacing:0px;fill:#800080;stroke-width:0.264583"
+               x="77.776466"
+               y="114.84946"
+               id="text13801-1-9-3"><tspan
+                 sodipodi:role="line"
+                 id="tspan13799-2-3-7"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.02167px;font-family:serif;-inkscape-font-specification:serif;fill:#0000ff;stroke-width:0.264583"
+                 x="77.776466"
+                 y="114.84946">zestedesavoir.com/billets/flux/atom/</tspan></text>
+            <text
+               xml:space="preserve"
+               style="font-size:4.02167px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';letter-spacing:0px;stroke-width:0.264583"
+               x="6.1976647"
+               y="114.76323"
+               id="text67179-7-5"><tspan
+                 sodipodi:role="line"
+                 id="tspan67177-0-92"
+                 style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.02167px;font-family:serif;-inkscape-font-specification:'serif Italic';stroke-width:0.264583"
+                 x="6.1976647"
+                 y="114.76323">2022-05-22 13:11:15 +0000 UTC -</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g153007-6"
+           transform="translate(-118.43293,250.34413)">
+          <g
+             id="g166161"
+             transform="translate(118.00628,-256.93371)">
+            <text
+               xml:space="preserve"
+               style="font-size:4.93889px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';text-decoration:underline;text-decoration-line:underline;text-decoration-color:#800080;letter-spacing:0px;fill:#0000ff;stroke-width:0.264583"
+               x="6.5143943"
+               y="104.79736"
+               id="text13801-1-2"><tspan
+                 sodipodi:role="line"
+                 id="tspan13799-2-6"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:serif;-inkscape-font-specification:serif;fill:#800080;stroke-width:0.264583"
+                 x="6.5143943"
+                 y="104.79736">RFC 9250: DNS over Dedicated QUIC Connections</tspan></text>
+            <text
+               xml:space="preserve"
+               style="font-size:4.02167px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';text-decoration:underline;text-decoration-line:underline;letter-spacing:0px;fill:#800080;stroke-width:0.264583"
+               x="77.776466"
+               y="114.84946"
+               id="text13801-1-9-1"><tspan
+                 sodipodi:role="line"
+                 id="tspan13799-2-3-8"
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.02167px;font-family:serif;-inkscape-font-specification:serif;fill:#800080;stroke-width:0.264583"
+                 x="77.776466"
+                 y="114.84946">www.bortzmeyer.org/deed.atom</tspan></text>
+            <text
+               xml:space="preserve"
+               style="font-size:4.02167px;line-height:1.25;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';letter-spacing:0px;stroke-width:0.264583"
+               x="6.1976647"
+               y="114.76323"
+               id="text67179-7-7"><tspan
+                 sodipodi:role="line"
+                 id="tspan67177-0-9"
+                 style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.02167px;font-family:serif;-inkscape-font-specification:'serif Italic';stroke-width:0.264583"
+                 x="6.1976647"
+                 y="114.76323">2022-05-22 00:00:00 +0000 UTC -</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
