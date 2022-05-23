@@ -6,6 +6,7 @@ transient anyway).
 
 Here is a running instance: <https://rivulet.sagebl.eu>.
 
+
 ## (Non)features
  * Fast and lightweight.
  * Visited links are purple, i.e., no need for a read/not-read flag.
@@ -31,3 +32,7 @@ cat feeds.txt | xargs printf "sadd riv:feeds '%s'\n" | redis-cli --pipe
 ## Dependencies
  * <https://github.com/go-redis/redis>
  * <https://github.com/mmcdole/gofeed>
+
+## Preview
+
+<img src="/art/preview.svg" width="500" />
