@@ -20,6 +20,14 @@
             font-size: 0.9em;
             margin-top: 0.9em;
         }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #ececec;
+            }
+            a { color: #7896e3; }
+            a:visited { color: #bb86fc; }
+        }
     </style>
   </head>
   <body>
