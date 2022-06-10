@@ -213,7 +213,7 @@ func apiHandler(w http.ResponseWriter, req *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	w.Header().Set("Cache-Control", "public, max-age=300, must-revalidate") // cache 5 min
+	w.Header().Set("Cache-Control", "public, max-age=900, must-revalidate") // cache 15 min
 	t := template.Must(template.ParseFiles("index.tpl"))
 	t.Execute(w, struct {
 		Items  *[]*Post
