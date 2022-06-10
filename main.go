@@ -16,12 +16,16 @@ import (
 	"github.com/mmcdole/gofeed"
 )
 
-const redisPrefix = "riv:"
-const separator = "^"
+const (
+	redisPrefix = "riv:"
+	separator   = "^"
+	allFeedsKey = "feeds-all"
+)
 
 const (
 	maxWaitMsecs      = 1500000 // 25 min
 	waitIntervalHours = 2
+	maxItemsToKeep    = 128
 )
 
 const (
@@ -47,6 +51,7 @@ func main() {
 				log.Println("No feed to fetch yet.")
 				time.Sleep(10 * time.Second)
 			}
+			trim(redisPrefix+allFeedsKey, maxItemsToKeep)
 			time.Sleep(waitIntervalHours * time.Hour)
 		}
 	}()
@@ -84,6 +89,19 @@ func fetchNewFeeds() bool {
 	}
 	wg.Wait()
 	return true
+}
+
+func trim(key string, keep int) error {
+	log.Printf("Start trimming %s\n", key)
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "",
+		DB:       0,
+	})
+	defer rdb.Close()
+	trimmed, err := rdb.ZRemRangeByRank(context.Background(), key, 0, -1*int64(keep)).Uint64()
+	log.Printf("Trimmed %d from %s\n", trimmed, key)
+	return err
 }
 
 func parseAndInsert(feedUrl string) error {
@@ -168,7 +186,7 @@ func parseAndInsert(feedUrl string) error {
 
 		rdb.Pipelined(ctx, func(rdb redis.Pipeliner) error {
 			rdb.ZAdd(ctx, redisPrefix+"feed:"+feedUrl, redisZEntry)
-			rdb.ZAdd(ctx, redisPrefix+"feeds-all", redisZEntry)
+			rdb.ZAdd(ctx, redisPrefix+allFeedsKey, redisZEntry)
 			return nil
 		})
 	}
@@ -186,7 +204,7 @@ func apiHandler(w http.ResponseWriter, req *http.Request) {
 	})
 	defer rdb.Close()
 
-	var lim int64 = 128
+	var lim int64 = maxItemsToKeep
 	fromScore := "0"
 	toScore := strconv.Itoa(int(time.Now().Unix()))
 
