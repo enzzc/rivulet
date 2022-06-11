@@ -26,6 +26,7 @@ const (
 	maxWaitMsecs      = 1500000 // 25 min
 	waitIntervalHours = 2
 	maxItemsToKeep    = 128
+	maxAgeDays        = 90 // ~3 months
 )
 
 const (
@@ -178,6 +179,10 @@ func parseAndInsert(feedUrl string) error {
 		date := item.PublishedParsed
 		if date == nil {
 			log.Println(feedUrl, item.Link, item.Published)
+			continue
+		}
+		if date.Before(time.Now().Add(-maxAgeDays * 24 * time.Hour)) {
+			// Older than maxAgeDays, skip
 			continue
 		}
 		score := date.UTC().Unix()
