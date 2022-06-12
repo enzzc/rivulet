@@ -139,7 +139,7 @@ func parseAndInsert(feedUrl string) error {
 		if err != nil {
 			log.Printf("HEAD %s ERROR: %v\n", feedUrl, err)
 			return err
-		} else if resp.StatusCode == http.StatusNotModified || resp.Header.Get("Etag") == etag {
+		} else if resp.StatusCode == http.StatusNotModified {
 			log.Printf("HEAD %s returned %d, not modified: skip.\n", feedUrl, resp.StatusCode)
 			return nil
 		}
