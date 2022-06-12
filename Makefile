@@ -20,5 +20,5 @@ push: image
 	podman push $(USER)/rivulet:latest docker.io/$(USER)/rivulet --creds=$(USER)
 
 .PHONY: rollout
-rollout: push
+rollout:
 	kubectl rollout restart deployment/rivulet
