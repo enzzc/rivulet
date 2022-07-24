@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"html/template"
-	"log"
 	"math/rand"
 	"net/http"
 	"net/url"
@@ -14,6 +13,7 @@ import (
 
 	"github.com/go-redis/redis/v8"
 	"github.com/mmcdole/gofeed"
+	"go.uber.org/zap"
 )
 
 const (
@@ -34,6 +34,8 @@ const (
 	fetchTimeoutSecs = 15
 )
 
+var logger *zap.SugaredLogger
+
 type Post struct {
 	Id       string `json:"id"`
 	Title    string `json:"title"`
@@ -44,12 +46,20 @@ type Post struct {
 	Clap     bool   `json:"clap"`
 }
 
+func init() {
+	l, err := zap.NewProduction()
+	if err != nil {
+		panic(err)
+	}
+	logger = l.Sugar()
+}
+
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	go func() {
 		for {
 			for !fetchNewFeeds() {
-				log.Println("No feed to fetch yet.")
+				logger.Infow("No feed to fetch yet.")
 				time.Sleep(10 * time.Second)
 			}
 			trim(redisPrefix+allFeedsKey, maxItemsToKeep)
@@ -72,7 +82,9 @@ func fetchNewFeeds() bool {
 	rdb.Close()
 
 	if len(list) > 0 {
-		log.Println("Fetching", len(list), "feeds")
+		logger.Infow("Fetching",
+			"count", len(list),
+		)
 	} else {
 		return false
 	}
@@ -93,7 +105,6 @@ func fetchNewFeeds() bool {
 }
 
 func trim(key string, keep int) error {
-	log.Printf("Start trimming %s\n", key)
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "",
@@ -101,14 +112,20 @@ func trim(key string, keep int) error {
 	})
 	defer rdb.Close()
 	trimmed, err := rdb.ZRemRangeByRank(context.Background(), key, 0, -1*int64(keep)).Uint64()
-	log.Printf("Trimmed %d from %s\n", trimmed, key)
+	logger.Infow("Trimmed",
+		"count", trimmed,
+		"key", key,
+	)
 	return err
 }
 
 func parseAndInsert(feedUrl string) error {
 	parsedURL, err := url.Parse(feedUrl)
 	if err != nil {
-		log.Println(feedUrl, err)
+		logger.Warnw("ParseAndInsert",
+			"url", feedUrl,
+			"err", err,
+		)
 		return err
 	}
 	feedId := parsedURL.Host + parsedURL.Path
@@ -137,23 +154,34 @@ func parseAndInsert(feedUrl string) error {
 		req.Header.Add("If-None-Match", etag)
 		resp, err := client.Do(req)
 		if err != nil {
-			log.Printf("HEAD %s ERROR: %v\n", feedUrl, err)
+			logger.Warnw("HTTPHead",
+				"url", feedUrl,
+				"err", err,
+			)
 			return err
 		} else if resp.StatusCode == http.StatusNotModified {
-			log.Printf("HEAD %s returned %d, not modified: skip.\n", feedUrl, resp.StatusCode)
+			logger.Infow("HTTPHead",
+				"url", feedUrl,
+				"http_code", resp.StatusCode,
+			)
 			return nil
 		}
 	}
 
 	// No Etag or mismatched Etag
-	log.Println("GET", feedUrl)
+	logger.Infow("HTTPGet",
+		"url", feedUrl,
+	)
 
 	req, err := http.NewRequest("GET", feedUrl, nil)
 	req.Header.Add("User-Agent", userAgent)
 	resp, err := client.Do(req)
 
 	if err != nil {
-		log.Printf("GET %s ERROR: %v\n", feedUrl, err)
+		logger.Warnw("HTTPGet",
+			"url", feedUrl,
+			"err", err,
+		)
 		return err
 	}
 	defer resp.Body.Close()
@@ -161,24 +189,37 @@ func parseAndInsert(feedUrl string) error {
 	if resp.StatusCode == http.StatusOK {
 		newEtag := resp.Header.Get("Etag")
 		if len(newEtag) > 0 {
-			log.Println(feedUrl, "New Etag:", newEtag)
+			logger.Infow("NewEtag",
+				"url", feedUrl,
+				"new_etag", newEtag,
+			)
 			rdb.HSet(ctx, cacheKey, "etag", newEtag, "last", time.Now().UTC().Unix())
 		}
 	} else {
-		log.Println(feedUrl, "HTTP: returned", resp.StatusCode)
+		logger.Warnw("NewEtag",
+			"url", feedUrl,
+			"http_code", resp.StatusCode,
+		)
 		return nil
 	}
 
 	feed, err := fp.Parse(resp.Body)
 	if err != nil {
-		log.Println(feedUrl, "Parsing Error:", err)
+		logger.Warnw("Parsing",
+			"url", feedUrl,
+			"err", err,
+		)
 		return err
 	}
 
 	for _, item := range feed.Items {
 		date := item.PublishedParsed
 		if date == nil {
-			log.Println(feedUrl, item.Link, item.Published)
+			logger.Warnw("SkipLink",
+				"url", feedUrl,
+				"item_link", item.Link,
+				"item_published", item.Published,
+			)
 			continue
 		}
 		if date.Before(time.Now().Add(-maxAgeDays * 24 * time.Hour)) {
@@ -194,6 +235,12 @@ func parseAndInsert(feedUrl string) error {
 			rdb.ZAdd(ctx, redisPrefix+allFeedsKey, redisZEntry)
 			return nil
 		})
+		logger.Infow("Inserted",
+			"url", feedUrl,
+			"item_link", item.Link,
+			"item_published", item.PublishedParsed,
+		)
+
 	}
 	return nil
 }
