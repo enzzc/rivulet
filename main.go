@@ -46,7 +46,20 @@ type Post struct {
 	Clap     bool   `json:"clap"`
 }
 
+func (p *Post) ShortDateDisplay() string {
+	return strings.Split(p.Pubdate, " +")[0]
+}
+
+func (p *Post) ShortDomainDisplay() string {
+	url, err := url.Parse(p.Link)
+	if err != nil {
+		return p.Domain
+	}
+	return strings.TrimPrefix(url.Host, "www.")
+}
+
 func init() {
+	rand.Seed(time.Now().UnixNano())
 	l, err := zap.NewProduction()
 	if err != nil {
 		panic(err)
@@ -55,7 +68,6 @@ func init() {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
 	go func() {
 		for {
 			for !fetchNewFeeds() {

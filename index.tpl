@@ -10,6 +10,7 @@
             margin: auto;
             padding: 1rem;
             max-width: 600px;
+            font-family: sans-serif;
         }
         .item { margin-top: 2rem; margin-bottom: 2rem; }
         .item-meta { font-size: 0.8rem; }
@@ -52,9 +53,9 @@
                     <div class="item">
                         <p class="item-main"><a href="{{ .Link }}">{{ .Title }}</a></p>
                         <div class="item-meta">
-                            <time><i>{{ .Pubdate }}</i></time> &ndash;
+                            <time datetime="{{ .ShortDateDisplay }}"><i>{{ .ShortDateDisplay }}</i></time> &ndash;
                             <a class="domain" href="?domain=https://{{ .Domain }}">
-                                {{ .Domain }}
+                                {{ .ShortDomainDisplay }}
                             </a>
                         </div>
                     </div>
@@ -65,6 +66,9 @@
     </main>
   </div>
  </div> <!-- end #app .container -->
+ <script>
+    console.log('ok');
+ </script>
 </body>
 </html>
 
