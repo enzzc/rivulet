@@ -10,7 +10,7 @@
             margin: auto;
             padding: 1rem;
             max-width: 600px;
-            font-family: sans-serif;
+            font-family: Roboto, -apple-system, 'Helvetica Neue', 'Droid Sans', 'Noto Sans', 'Segoe UI', SegoeUI, sans-serif;
         }
         .item { margin-top: 2rem; margin-bottom: 2rem; }
         .item-meta { font-size: 0.8rem; }
