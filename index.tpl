@@ -66,9 +66,6 @@
     </main>
   </div>
  </div> <!-- end #app .container -->
- <script>
-    console.log('ok');
- </script>
 </body>
 </html>
 
